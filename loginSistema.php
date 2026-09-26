@@ -24,7 +24,7 @@
                     placeholder="Digite sua senha">
             </div>
             <button type="submit" class="btn btn-primary w-100">Entrar</button>
-            <p>Não possui cadastro? <a href="cadastro.php">Clique aqui</a></p>
+            <p>Não possui cadastro? <a href="cadastroSistema.php">Clique aqui</a></p>
             <p class="fw-bold mb-0">Login de administrador </p>
             <p class="small">E-mail: admin@gmail.com <br>Senha: !123456</p>
         </form>
