@@ -14,9 +14,62 @@
         <!-- Include para não repetir o código da barra lateral em todas as telas. -->
         <?php include 'barraLateral.php'; ?>
         <main class="flex-grow-1 p-4">
+            <h1>Bem-vindo ao Sistema</h1>
+            <h5>Escolha uma das opções abaixo:</h5>
+        <div class="row g-3 mt-4">
+            <div class="col-md-3">
+                <div class="card h-100 text-center shadow-sm card-atalho">
+                    <div class="card-body">
+                        <i class="bi bi-grid fs-1 text-primary"></i>
+                        <h5 class="card-title mt-2">
+                            <a href="telaCatalogo.php"
+                                class="stretched-link text-decoration-none text-body">Catálogo</a>
+                        </h5>
+                        <p class="card-text text-body-secondary">Veja os produtos e selecione os que deseja adicionar ao
+                            carrinho.</p>
+                    </div>
+                </div>
+            </div>
 
+            <div class="col-md-3">
+                <div class="card h-100 text-center shadow-sm card-atalho">
+                    <div class="card-body">
+                        <i class="bi bi-plus-square fs-1 text-primary"></i>
+                        <h5 class="card-title mt-2">
+                            <a href="telaCadastros.php"
+                                class="stretched-link text-decoration-none text-body">Cadastros</a>
+                        </h5>
+                        <p class="card-text text-body-secondary">Cadastre novos produtos, fornecedores e cestas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card h-100 text-center shadow-sm card-atalho">
+                    <div class="card-body">
+                        <i class="bi bi-pencil-square fs-1 text-primary"></i>
+                        <h5 class="card-title mt-2">
+                            <a href="telaAtualizarDados.php"
+                                class="stretched-link text-decoration-none text-body">Atualizar Dados</a>
+                        </h5>
+                        <p class="card-text text-body-secondary">Edite ou exclua os registros já cadastrados.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card h-100 text-center shadow-sm card-atalho">
+                    <div class="card-body">
+                        <i class="bi bi-cart fs-1 text-primary"></i>
+                        <h5 class="card-title mt-2">
+                            <a href="telaCarrinho.php"
+                                class="stretched-link text-decoration-none text-body">Carrinho</a>
+                        </h5>
+                        <p class="card-text text-body-secondary">Confira os produtos selecionados e o valor total.</p>
+                    </div>
+                </div>
+            </div>
         </main>
-
     </div>
 </body>
 
