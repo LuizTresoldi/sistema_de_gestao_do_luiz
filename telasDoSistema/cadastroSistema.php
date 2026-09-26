@@ -30,14 +30,14 @@
                         placeholder="Digite sua senha">
                 </div>
                 <div class="mb-3">
-                <label for="senhaRepetir" class="form-label">Confirmar Senha</label>
-                <input type="password" class="form-control" id="senhaRepetir" name="senhaRepetir" required
-                    placeholder="Confirme sua senha">
+                    <label for="senhaRepetir" class="form-label">Confirmar Senha</label>
+                    <input type="password" class="form-control" id="senhaRepetir" name="senhaRepetir" required
+                        placeholder="Confirme sua senha">
+                </div>
             </div>
-    </div>
-    <button type="submit" class="btn btn-primary w-100">Cadastrar</button>
-    <p>Já possui cadastro? <a href="loginSistema.php">Clique aqui</a></p>
-    </form>
+            <button type="submit" class="btn btn-primary w-100">Cadastrar</button>
+            <p>Já possui cadastro? <a href="loginSistema.php">Clique aqui</a></p>
+        </form>
     </div>
 </body>
 
