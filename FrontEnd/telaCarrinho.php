@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php require_once '../BackEnd/verificarSessao.php'; ?>
 <html lang="pt-BR" data-bs-theme="light">
 
 <head>

@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<?php
-session_start();
-?>
+<?php require_once '../BackEnd/verificarSessao.php'; ?>
 <html lang="pt-BR" data-bs-theme="light">
 
 <head>
