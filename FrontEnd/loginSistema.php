@@ -15,7 +15,7 @@
         <form action="processaLogin.php" method="POST">
             <div class="mb-3">
                 <label for="usuario" class="form-label">Usuário</label>
-                <input type="text" class="form-control" id="usuario" name="usuario" required
+                <input type="email" class="form-control" id="usuario" name="email" required
                     placeholder="Digite seu usuário">
             </div>
             <div class="mb-3">
