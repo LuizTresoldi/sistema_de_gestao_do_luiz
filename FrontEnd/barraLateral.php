@@ -19,5 +19,5 @@
             <a href="telaCarrinho.php" class="nav-link fw-semibold fs-5 text-white">Carrinho</a>
         </li>
     </ul>
-    <a href="sairSistema.php" class="btn btn-danger mt-auto">Sair</a>
+    <a href="../BackEnd/sairSistema.php" class="btn btn-danger mt-auto">Sair</a>
 </aside>
