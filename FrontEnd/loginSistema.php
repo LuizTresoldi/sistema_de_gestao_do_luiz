@@ -12,6 +12,7 @@
 <body class="d-flex justify-content-center align-items-center vh-100 bg-body-tertiary">
     <div class="card p-4" style="width: 450px;">
         <h2 class="text-left mb-4">Login</h2>
+        <?php include 'mensagens.php'; ?>
         <form action="../BackEnd/processaLogin.php" method="POST">
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
