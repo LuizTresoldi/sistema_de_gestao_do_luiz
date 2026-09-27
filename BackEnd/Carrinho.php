@@ -37,15 +37,22 @@ class Carrinho
     }
 
     public function adicionarProdutos($idCarrinho, $idsProdutos)
-    {
-        $conexao = new Conexao();
-        $pdo = $conexao->conectar();
+{
+    $conexao = new Conexao();
+    $pdo = $conexao->conectar();
 
-        $comando = $pdo->prepare("INSERT IGNORE INTO carrinho_produto (id_carrinho, id_produto) VALUES (?, ?)");
-        foreach ($idsProdutos as $idProduto) {
-            $comando->execute([$idCarrinho, $idProduto]);
-        }
+    // confere se o carrinho pertence ao usuário logado
+    $dono = $pdo->prepare("SELECT id FROM carrinhos WHERE id = ? AND id_usuario = ?");
+    $dono->execute([$idCarrinho, $this->idUsuario]);
+    if (!$dono->fetch()) {
+        return;
     }
+
+    $comando = $pdo->prepare("INSERT IGNORE INTO carrinho_produto (id_carrinho, id_produto) VALUES (?, ?)");
+    foreach ($idsProdutos as $idProduto) {
+        $comando->execute([$idCarrinho, $idProduto]);
+    }
+}
 
     // lista os produtos de um carrinho, com o nome do fornecedor
     public function listarProdutos($idCarrinho)

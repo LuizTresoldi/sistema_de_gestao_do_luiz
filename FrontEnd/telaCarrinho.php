@@ -1,4 +1,16 @@
-<?php require_once '../BackEnd/verificarSessao.php'; ?>
+<?php
+require_once '../BackEnd/verificarSessao.php';
+require_once '../BackEnd/Carrinho.php';
+
+$carrinho = new Carrinho($_SESSION['id_usuario']);
+$carrinhos = $carrinho->listar();
+
+$idCarrinho = $_GET['carrinho'] ?? '';
+$produtos = $idCarrinho !== '' ? $carrinho->listarProdutos($idCarrinho) : [];
+
+$quantidade = count($produtos);
+$total = array_sum(array_column($produtos, 'preco'));
+?>
 <!DOCTYPE html>
 <html lang="pt-BR" data-bs-theme="light">
 
@@ -17,23 +29,62 @@
         <main class="flex-grow-1 p-4">
             <h1>Carrinho</h1>
             <h5>Visualize seu carrinho</h5>
-            <select class="form-select mb-3" id="selectCarrinho" style="max-width: 300px" required>
-                <option value="">Selecione um carrinho</option>
-            </select>
+
+            <form method="GET" class="mt-3">
+                <select class="form-select" name="carrinho" style="max-width: 300px" onchange="this.form.submit()">
+                    <option value="">Selecione um carrinho</option>
+                    <?php foreach ($carrinhos as $c): ?>
+                        <option value="<?= $c['id'] ?>" <?= $c['id'] == $idCarrinho ? 'selected' : '' ?>>
+                            <?= htmlspecialchars($c['nome']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </form>
+
             <div class="row g-4 mt-3">
                 <div class="col-md-8">
-                    <table class="table table-hover align-middle" id="tabelaFornecedores">
+                    <table class="table table-hover align-middle" id="tabelaCarrinho">
                         <thead>
                             <tr>
                                 <th>Produto</th>
                                 <th>Fornecedor</th>
                                 <th>Preço</th>
-                                <th class="text-end" style="width: 120px">Ações</th>
+                                <th class="text-end">Ações</th>
                             </tr>
                         </thead>
-                        <tbody></tbody>
+                        <tbody>
+                            <?php if (empty($produtos)): ?>
+                                <tr>
+                                    <td colspan="4" class="text-center text-body-secondary py-4">
+                                        <?= $idCarrinho === '' ? 'Escolha um carrinho para ver os produtos.' : 'Este carrinho está vazio.' ?>
+                                    </td>
+                                </tr>
+                            <?php endif; ?>
+
+                            <?php foreach ($produtos as $p): ?>
+                                <tr>
+                                    <td>
+                                        <?= htmlspecialchars($p['nome']) ?>
+                                    </td>
+                                    <td>
+                                        <?= htmlspecialchars($p['fornecedor']) ?>
+                                    </td>
+                                    <td>R$
+                                        <?= number_format($p['preco'], 2, ',', '.') ?>
+                                    </td>
+                                    <td class="text-end">
+                                        <form action="../BackEnd/removerDoCarrinho.php" method="POST">
+                                            <input type="hidden" name="id_carrinho" value="<?= $idCarrinho ?>">
+                                            <input type="hidden" name="id_produto" value="<?= $p['id'] ?>">
+                                            <button type="submit" class="btn btn-sm btn-outline-danger">Remover</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
                     </table>
                 </div>
+
                 <div class="col-md-4">
                     <div class="card shadow-sm">
                         <div class="card-header bg-dark text-white">
@@ -42,12 +93,16 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between mb-2">
                                 <span>Quantidade de produtos</span>
-                                <span id="quantidadeProdutos">0</span>
+                                <span id="qtdProdutos">
+                                    <?= $quantidade ?>
+                                </span>
                             </div>
                             <hr>
                             <div class="d-flex justify-content-between fs-5 fw-bold">
                                 <span>Valor total</span>
-                                <span id="valorTotal">R$ 0,00</span>
+                                <span id="valorTotal">R$
+                                    <?= number_format($total, 2, ',', '.') ?>
+                                </span>
                             </div>
                         </div>
                     </div>
