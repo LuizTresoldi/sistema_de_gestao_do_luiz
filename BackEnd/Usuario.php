@@ -29,9 +29,13 @@ class Usuario
         $conexao = new Conexao();
         $pdo = $conexao->conectar();
 
-        $comando = $pdo->prepare("INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)");
-        $comando->execute([$userNome, $userEmail, $senhaProtegida]);
-
+        try {
+            $comando = $pdo->prepare("INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)");
+            $comando->execute([$userNome, $userEmail, $senhaProtegida]);
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
     }
     public function autenticar($userEmail, $userSenha)
     {
