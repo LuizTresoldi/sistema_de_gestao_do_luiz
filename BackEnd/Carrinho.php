@@ -37,22 +37,22 @@ class Carrinho
     }
 
     public function adicionarProdutos($idCarrinho, $idsProdutos)
-{
-    $conexao = new Conexao();
-    $pdo = $conexao->conectar();
+    {
+        $conexao = new Conexao();
+        $pdo = $conexao->conectar();
 
-    // confere se o carrinho pertence ao usuário logado
-    $dono = $pdo->prepare("SELECT id FROM carrinhos WHERE id = ? AND id_usuario = ?");
-    $dono->execute([$idCarrinho, $this->idUsuario]);
-    if (!$dono->fetch()) {
-        return;
-    }
+        // confere se o carrinho pertence ao usuário logado
+        $dono = $pdo->prepare("SELECT id FROM carrinhos WHERE id = ? AND id_usuario = ?");
+        $dono->execute([$idCarrinho, $this->idUsuario]);
+        if (!$dono->fetch()) {
+            return;
+        }
 
-    $comando = $pdo->prepare("INSERT IGNORE INTO carrinho_produto (id_carrinho, id_produto) VALUES (?, ?)");
-    foreach ($idsProdutos as $idProduto) {
-        $comando->execute([$idCarrinho, $idProduto]);
+        $comando = $pdo->prepare("INSERT IGNORE INTO carrinho_produto (id_carrinho, id_produto) VALUES (?, ?)");
+        foreach ($idsProdutos as $idProduto) {
+            $comando->execute([$idCarrinho, $idProduto]);
+        }
     }
-}
 
     // lista os produtos de um carrinho, com o nome do fornecedor
     public function listarProdutos($idCarrinho)
@@ -81,5 +81,33 @@ class Carrinho
                                   JOIN carrinhos c ON c.id = cp.id_carrinho
                                   WHERE cp.id_carrinho = ? AND cp.id_produto = ? AND c.id_usuario = ?");
         $comando->execute([$idCarrinho, $idProduto, $this->idUsuario]);
+    }
+
+    public function atualizar($carrinhoId, $carrinhoNome)
+    {
+        $conexao = new Conexao();
+        $pdo = $conexao->conectar();
+
+        try {
+            $comando = $pdo->prepare("UPDATE carrinhos SET nome = ? WHERE id = ? AND id_usuario = ?");
+            $comando->execute([$carrinhoNome, $carrinhoId, $this->idUsuario]);
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    public function excluir($carrinhoId)
+    {
+        $conexao = new Conexao();
+        $pdo = $conexao->conectar();
+
+        try {
+            $comando = $pdo->prepare("DELETE FROM carrinhos WHERE id = ? AND id_usuario = ?");
+            $comando->execute([$carrinhoId, $this->idUsuario]);
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 }
