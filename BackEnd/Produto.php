@@ -43,4 +43,32 @@ class Produto
 
         return $comando->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function atualizar($produtoId, $produtoNome, $produtoDescricao, $produtoPreco)
+    {
+        $conexao = new Conexao();
+        $pdo = $conexao->conectar();
+
+        try {
+            $comando = $pdo->prepare("UPDATE produtos SET nome = ?, descricao = ?, preco = ? WHERE id = ?");
+            $comando->execute([$produtoNome, $produtoDescricao, $produtoPreco, $produtoId]);
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    public function excluir($produtoId)
+    {
+        $conexao = new Conexao();
+        $pdo = $conexao->conectar();
+
+        try {
+            $comando = $pdo->prepare("DELETE FROM produtos WHERE id = ?");
+            $comando->execute([$produtoId]);
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }
