@@ -1,4 +1,8 @@
-<?php require_once '../BackEnd/verificarSessao.php'; ?>
+<?php
+require_once '../BackEnd/verificarSessao.php';
+require_once '../BackEnd/Fornecedor.php';
+$listarFornecedores = (new Fornecedor())->listar();
+?>
 <!DOCTYPE html>
 <html lang="pt-BR" data-bs-theme="light">
 
@@ -25,7 +29,7 @@
                             <h5 class="mb-0">Novo produto</h5>
                         </div>
                         <div class="card-body">
-                            <form method="post">
+                            <form action="../BackEnd/processaProduto.php" method="POST">
                                 <div class="mb-3">
                                     <label for="nomeProduto" class="form-label">Nome</label>
                                     <input type="text" class="form-control" id="nomeProduto" name="nomeProduto"
@@ -51,6 +55,11 @@
                                     <label for="fornecedor_id" class="form-label">Fornecedor</label>
                                     <select class="form-select" id="fornecedor_id" name="fornecedor_id" required>
                                         <option value="">Selecione um fornecedor</option>
+                                        <?php foreach ($listarFornecedores as $f): ?>
+                                            <option value="<?= $f['id'] ?>">
+                                                <?= htmlspecialchars($f['nome']) ?>
+                                            </option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
 

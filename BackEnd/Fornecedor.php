@@ -9,6 +9,16 @@ class Fornecedor
     private $fornecedorTelefone;
     private $fornecedorId;
 
+    public function setFornecedorId($id)
+    {
+        $this->fornecedorId = $id;
+    }
+
+    public function getFornecedorId()
+    {
+        return $this->fornecedorId;
+    }
+
     public function cadastrar($fornecedorNome, $fornecedorCNPJ, $fornecedorEmail, $fornecedorTelefone)
     {
         $conexao = new Conexao();
