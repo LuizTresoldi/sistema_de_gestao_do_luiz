@@ -1,7 +1,7 @@
 <?php
-require_once 'PDO.php';
+require_once 'Conexao.php';
 
-class usuario
+class Usuario
 {
     private $userId;
     private $userNome;
@@ -32,5 +32,26 @@ class usuario
         $comando = $pdo->prepare("INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)");
         $comando->execute([$userNome, $userEmail, $senhaProtegida]);
 
+    }
+    public function autenticar($userEmail, $userSenha)
+    {
+        $senhaProtegida = hash('sha256', $userSenha);
+
+        $conexao = new Conexao();
+        $pdo = $conexao->conectar();
+
+        $comando = $pdo->prepare("SELECT * FROM usuarios WHERE email = ? AND senha = ?");
+        $comando->execute([$userEmail, $senhaProtegida]);
+
+        $usuario = $comando->fetch(PDO::FETCH_ASSOC);
+
+        if ($usuario) {
+            $this->userId = $usuario['id'];
+            $this->userNome = $usuario['nome'];
+            $this->userEmail = $usuario['email'];
+            return true;
+        } else {
+            return false;
+        }
     }
 }
