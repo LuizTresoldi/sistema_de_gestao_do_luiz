@@ -21,6 +21,7 @@ $listarFornecedores = (new Fornecedor())->listar();
         <main class="flex-grow-1 p-4">
             <h1>Cadastros</h1>
             <h5>Faça cadastro de produtos, fornecedores e crie um novo carrinho</h5>
+            <?php include 'mensagens.php'; ?>
             <!-- card do produto -->
             <div class="row g-4 mt-3">
                 <div class="col-md-4">
