@@ -42,4 +42,32 @@ class Fornecedor
 
         return $comando->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function atualizar($fornecedorId, $fornecedorNome, $fornecedorCNPJ, $fornecedorEmail, $fornecedorTelefone)
+    {
+        $conexao = new Conexao();
+        $pdo = $conexao->conectar();
+
+        try {
+            $comando = $pdo->prepare("UPDATE fornecedores SET nome = ?, cnpj = ?, email = ?, telefone = ? WHERE id = ?");
+            $comando->execute([$fornecedorNome, $fornecedorCNPJ, $fornecedorEmail, $fornecedorTelefone, $fornecedorId]);
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    public function excluir($fornecedorId)
+    {
+        $conexao = new Conexao();
+        $pdo = $conexao->conectar();
+
+        try {
+            $comando = $pdo->prepare("DELETE FROM fornecedores WHERE id = ?");
+            $comando->execute([$fornecedorId]);
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }
