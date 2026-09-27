@@ -13,5 +13,5 @@ if ($idCarrinho === '' || empty($idsProdutos)) {
 $carrinho = new Carrinho($_SESSION['id_usuario']);
 $carrinho->adicionarProdutos($idCarrinho, $idsProdutos);
 
-header('Location: ../FrontEnd/telaCarrinho.php?carrinho=' . $idCarrinho . '&sucesso=adicionado');
+header('Location: ../FrontEnd/telaCarrinho.php?carrinho=' . $idCarrinho . '&sucesso=produtosAdicionados');
 exit;
