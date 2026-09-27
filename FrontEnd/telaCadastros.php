@@ -66,7 +66,7 @@
                             <h5 class="mb-0">Novo fornecedor</h5>
                         </div>
                         <div class="card-body">
-                            <form method="post">
+                            <form action="../BackEnd/processaFornecedor.php" method="POST">
                                 <div class="mb-3">
                                     <label for="nomeFornecedor" class="form-label">Nome</label>
                                     <input type="text" class="form-control" id="nomeFornecedor" name="nomeFornecedor"
@@ -75,8 +75,8 @@
 
                                 <div class="mb-3">
                                     <label for="cnpjFornecedor" class="form-label">CNPJ</label>
-                                    <input type="number" class="form-control" id="cnpjFornecedor" name="cnpjFornecedor"
-                                        placeholder="Digite o CNPJ do fornecedor" required>
+                                    <input type="text" class="form-control" id="cnpjFornecedor" name="cnpjFornecedor"
+                                        placeholder="Digite o CNPJ do fornecedor" maxlength="18" required>
                                 </div>
 
                                 <div class="mb-3">
