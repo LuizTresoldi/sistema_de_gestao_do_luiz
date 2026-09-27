@@ -4,7 +4,7 @@
 
     <ul class="nav flex-column">
         <li class="nav-item">
-            <a href="InicioSistema.php" class="nav-link fw-semibold fs-5 text-white">Início</a>
+            <a href="inicioSistema.php" class="nav-link fw-semibold fs-5 text-white">Início</a>
         </li>
         <li class="nav-item">
             <a href="telaCatalogo.php" class="nav-link fw-semibold fs-5 text-white">Catálogo</a>

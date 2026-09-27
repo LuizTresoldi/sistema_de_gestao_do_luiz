@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+session_start();
+?>
 <html lang="pt-BR" data-bs-theme="light">
 
 <head>
@@ -14,7 +17,7 @@
         <!-- Include para não repetir o código da barra lateral em todas as telas. -->
         <?php include 'barraLateral.php'; ?>
         <main class="flex-grow-1 p-4">
-            <h1>Bem-vindo ao Sistema</h1>
+            <h1>Bem-vindo, <?= $_SESSION['nome_usuario'] ?>!</h1>
             <h5>Escolha uma das opções abaixo:</h5>
         <div class="row g-3 mt-4">
             <div class="col-md-3">

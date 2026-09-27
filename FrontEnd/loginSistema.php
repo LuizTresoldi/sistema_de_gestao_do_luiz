@@ -12,11 +12,11 @@
 <body class="d-flex justify-content-center align-items-center vh-100 bg-body-tertiary">
     <div class="card p-4" style="width: 450px;">
         <h2 class="text-left mb-4">Login</h2>
-        <form action="processaLogin.php" method="POST">
+        <form action="../BackEnd/processaLogin.php" method="POST">
             <div class="mb-3">
-                <label for="usuario" class="form-label">Usuário</label>
-                <input type="email" class="form-control" id="usuario" name="email" required
-                    placeholder="Digite seu usuário">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required
+                    placeholder="Digite seu e-mail">
             </div>
             <div class="mb-3">
                 <label for="senha" class="form-label">Senha</label>
@@ -24,9 +24,7 @@
                     placeholder="Digite sua senha">
             </div>
             <button type="submit" class="btn btn-primary w-100">Entrar</button>
-            <p>Não possui cadastro? <a href="cadastroSistema.php">Clique aqui</a></p>
-            <p class="fw-bold mb-0">Login de administrador </p>
-            <p class="small">E-mail: admin@gmail.com <br>Senha: !123456</p>
+            <p class="mt-3 mb-0">Não possui cadastro? <a href="cadastroSistema.php">Clique aqui</a></p>
         </form>
     </div>
 </body>
