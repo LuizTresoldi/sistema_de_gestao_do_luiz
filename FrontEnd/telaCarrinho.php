@@ -29,7 +29,7 @@ $total = array_sum(array_column($produtos, 'preco'));
         <main class="flex-grow-1 p-4">
             <h1>Carrinho</h1>
             <h5>Visualize seu carrinho</h5>
-
+            <?php include 'mensagens.php'; ?>
             <form method="GET" class="mt-3">
                 <select class="form-select" name="carrinho" style="max-width: 300px" onchange="this.form.submit()">
                     <option value="">Selecione um carrinho</option>

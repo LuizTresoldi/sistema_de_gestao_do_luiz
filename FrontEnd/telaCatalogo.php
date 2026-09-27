@@ -24,7 +24,7 @@ $carrinhos = (new Carrinho($_SESSION['id_usuario']))->listar();
         <main class="flex-grow-1 p-4">
             <h1>Catálogo de Produtos</h1>
             <h5>Selecione os produtos que deseja adicionar ao carrinho</h5>
-
+            <?php include 'mensagens.php'; ?>
             <form action="../BackEnd/adicionarCarrinho.php" method="POST" id="formCatalogo">
 
                 <table class="table table-hover align-middle mt-4">
