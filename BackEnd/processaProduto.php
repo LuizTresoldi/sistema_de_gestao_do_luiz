@@ -14,9 +14,9 @@ $produto = new Produto();
 $produto->setFornecedor($fornecedor);
 
 if ($produto->cadastrar($nome, $descricao, $preco)) {
-    header('Location: ../FrontEnd/telaCadastros.php?sucesso=produto');
+    header('Location: ../FrontEnd/telaCadastros.php?sucesso=produtoCadastrado');
     exit;
 } else {
-    header('Location: ../FrontEnd/telaCadastros.php?erro=produto');
+    header('Location: ../FrontEnd/telaCadastros.php?erro=produtoNaoCadastrado');
     exit;
 }

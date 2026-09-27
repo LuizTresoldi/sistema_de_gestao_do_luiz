@@ -10,9 +10,9 @@ $telefoneFornecedor = trim($_POST['telefoneFornecedor']);
 $fornecedor = new Fornecedor();
 
 if ($fornecedor->cadastrar($nomeFornecedor, $cnpjFornecedor, $emailFornecedor, $telefoneFornecedor)) {
-    header('Location: ../FrontEnd/telaCadastros.php?sucesso=fornecedor');
+    header('Location: ../FrontEnd/telaCadastros.php?sucesso=fornecedorCadastrado');
     exit;
 } else {
-    header('Location: ../FrontEnd/telaCadastros.php?erro=fornecedor');
+    header('Location: ../FrontEnd/telaCadastros.php?erro=fornecedorNaoCadastrado');
     exit;
 }

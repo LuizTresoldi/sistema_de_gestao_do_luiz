@@ -7,9 +7,9 @@ $nomeCarrinho = trim($_POST['nomeCarrinho']);
 $carrinho = new Carrinho($_SESSION['id_usuario']);
 
 if ($carrinho->criarCarrinho($nomeCarrinho)) {
-    header('Location: ../FrontEnd/telaCadastros.php?sucesso=carrinho');
+    header('Location: ../FrontEnd/telaCadastros.php?sucesso=carrinhoCriado');
     exit;
 } else {
-    header('Location: ../FrontEnd/telaCadastros.php?erro=carrinho');
+    header('Location: ../FrontEnd/telaCadastros.php?erro=carrinhoNaoCriado');
     exit;
 }

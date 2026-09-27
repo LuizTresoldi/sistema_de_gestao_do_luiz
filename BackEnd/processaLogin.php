@@ -13,6 +13,6 @@ if ($usuario->autenticar($email, $senha)) {
     header('Location: ../FrontEnd/inicioSistema.php');
     exit;
 } else {
-    header('Location: ../FrontEnd/loginSistema.php?erro=loginIncorreto');
+    header('Location: ../FrontEnd/loginSistema.php?erro=loginInvalido');
     exit;
 }

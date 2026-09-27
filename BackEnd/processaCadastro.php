@@ -7,17 +7,17 @@ $senha = $_POST['senha'];
 $senhaRepetir = $_POST['senhaRepetir'];
 
 if ($senha !== $senhaRepetir) {
-    header('Location: ../FrontEnd/cadastroSistema.php?erro=senhaIncorreta');
+    header('Location: ../FrontEnd/cadastroSistema.php?erro=senhasDiferentes');
     exit;
 }
 
 $usuario = new Usuario();
 
 if ($usuario->cadastrar($nome, $email, $senha)) {
-    header('Location: ../FrontEnd/loginSistema.php?sucesso=cadastroRealizado');
+    header('Location: ../FrontEnd/loginSistema.php?sucesso=usuarioCadastrado');
     exit;
 } else {
-    header('Location: ../FrontEnd/cadastroSistema.php?erro=emailIncorreto');
+    header('Location: ../FrontEnd/cadastroSistema.php?erro=emailExistente');
     exit;
 }
 
