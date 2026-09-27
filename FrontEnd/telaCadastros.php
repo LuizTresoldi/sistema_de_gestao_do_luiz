@@ -112,7 +112,7 @@ $listarFornecedores = (new Fornecedor())->listar();
                             <h5 class="mb-0">Novo carrinho</h5>
                         </div>
                         <div class="card-body">
-                            <form method="post">
+                            <form action="../BackEnd/processaCarrinho.php" method="POST">
                                 <div class="mb-3">
                                     <label for="nomeCarrinho" class="form-label">Nome</label>
                                     <input type="text" class="form-control" id="nomeCarrinho" name="nomeCarrinho"
