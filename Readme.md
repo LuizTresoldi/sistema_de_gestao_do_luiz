@@ -52,6 +52,8 @@ imagens/    DER e esboços das telas
 
 ## Esboços das telas (Figma)
 
+Projeto completo no Figma: [Gestão de Produtos](https://www.figma.com/design/fWX00hFnVtJYBGCnKJo793/Gest%25C3%25A3o-de-Produtos?node-id=5488-1255&p=f&t=4GR4DnV39357NWNU-0)
+
 ### Login
 ![Tela de Login](imagens/Tela_Login.png)
 
